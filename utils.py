@@ -8,6 +8,40 @@ headers = {
     'Referer': 'https://google.com'
 }
 
+CLASSES_FAB = ['Guardian', "Warrior", "Runeblade", "Mechanologist", "Ninja", "Adjudicator", "Necromancer", "Bard", "Shapeshifter", "Thief", "Brute", "Assassin", "Wizard", "Illusionist", "Ranger", "Pirate", "Merchant", "Pit-Fighter", "cleric"]
+TALENTOS_FAB = ["Elemental" ,"Draconic","Mystic","Light","Shadow","Royal","Reviled","Revered","Chaos"]
+
+EVENT_MAPPING = {
+    "tc": "tc",
+    "upf": "calling",
+    "calling": "calling",
+    "battle hardened": "battle hardened",
+    "proquest": "pro quest",
+    "pro quest": "pro quest",
+    "road to nationals": "road to nationals",
+    "sunday showdown": "sunday showdown",
+    "skirmish": "skirmish",
+    "national": "national",
+    "silver age spotlight": "silver age spotlight",
+    "world championship": "world championships",
+    "pro tour": "pro tour",
+    "dumpster": "dumpster dive",
+    "dev download": "dev download",
+    "10k": "Road to $10k",
+    "zero to eighty": "zero to eighty",
+    "celebrational": "celebrational",
+    "store champions": "store champions",
+    "smash palace": "smash palace",
+    "cat footprints shilin armed cup": "cat footprints shilin armed cup",
+    "the savage lands showdown": "the savage lands showdown",
+    "commoner": "commoner",
+    "hong kong regional championship": "hong kong regional championship",
+    "bulk up": "bulk up",
+    "primed to fight": "primed to fight",
+    "masterclass": "masterclass",
+    "world tour": "world tour"
+}
+
 def arquivo_e_atual(caminho_arquivo):
 
     if not os.path.exists(caminho_arquivo):
