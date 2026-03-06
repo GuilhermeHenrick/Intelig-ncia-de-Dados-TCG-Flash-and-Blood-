@@ -1,37 +1,29 @@
-# Intelig-ncia-de-Dados-TCG-Flash-and-Blood-
-Projeto de inteligência de dados em TCG
+# ⚔️ Inteligência de Dados - TCG Flesh and Blood
 
-# 🃏 Flash and Blood (FAB) - Competitive Meta-Game Insights
+## 📜 Sobre o Projeto
+Este projeto de Inteligência de Dados e Web Scraping foca no card game **Flesh and Blood (TCG)**. O objetivo principal é extrair, processar e consolidar informações diretamente do site oficial do jogo, criando um banco de dados estruturado sobre torneios, *decklists* (listas de cartas) e heróis.
 
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
-![BeautifulSoup](https://img.shields.io/badge/BeautifulSoup-4.12-green?style=for-the-badge)
+O resultado é um *dataset* limpo (disponível em formatos `.csv` e `.parquet`), construído para viabilizar análises estatísticas avançadas, estudos de performance de classes/talentos e visualização do *metagame* atual. O pipeline de dados foi desenhado para ser automatizado, atualizando as informações de forma eficiente através do processamento paralelo.
 
-## 📌 Sobre o Projeto
-Este projeto é uma ferramenta de **Inteligência de Dados** voltada para o cenário competitivo do Trading Card Game (TCG) **Flash and Blood**. O objetivo principal é automatizar a coleta de dados de torneios globais e correlacionar listas de decks com metadados técnicos dos heróis para identificar tendências no "meta-game".
+## 📊 Dashboard Interativo
+Os dados processados por este pipeline alimentam um painel de visualização de dados construído no **Google Looker Studio**. Através dele, é possível explorar de forma visual e interativa o cenário competitivo do jogo, filtrando heróis, torneios e tendências de vitórias.
 
-## 🚀 Funcionalidades
-- **Web Scraping Avançado:** Extração automatizada de resultados de torneios (Calling, Battle Hardened, Skirmish) diretamente do site oficial `fabtcg.com`.
-- **Gestão de Sessões:** Uso de `requests.Session` e headers personalizados para garantir a estabilidade das requisições e evitar bloqueios.
-- **Cruzamento de Dados:** Integração de dados de performance com uma base de metadados (Classes e Talentos) via API e arquivos estruturados.
-- **Data Cleaning:** Tratamento de strings, normalização de datas e limpeza de dados complexos utilizando **Pandas**.
+🔗 **[Acesse o Dashboard Interativo Clicando Aqui](https://lookerstudio.google.com/reporting/8307ae14-615f-4199-9449-857cd4650f39)**
 
-## 🛠️ Stack Tecnológica
-- **Linguagem:** Python
-- **Bibliotecas de Extração:** BeautifulSoup4, Requests
-- **Análise de Dados:** Pandas
-- **Visualização (em progresso):** Seaborn / Matplotlib
+## 🛠️ Tecnologias Utilizadas
+O projeto foi desenvolvido utilizando a linguagem **Python 3** e as seguintes bibliotecas e ferramentas:
 
-## 📂 Estrutura do Repositório
-- `/notebooks`: Arquivos `.ipynb` contendo as Provas de Conceito (PoC) e análises exploratórias.
-- `/data`: (Opcional) Exemplos de datasets gerados ou metadados de heróis.
-- `/src`: (Em breve) Scripts refatorados e modulares.
+* **Manipulação e Análise de Dados:** `pandas`
+* **Web Scraping:** `BeautifulSoup` (bs4) e `requests`
+* **Processamento Paralelo:** `concurrent.futures` (para otimização e velocidade na extração)
+* **Orquestração e Automação:** `papermill` (para execução programática de notebooks)
+* **Visualização de Dados:** Google Looker Studio
+* **Ambiente de Desenvolvimento:** Jupyter Notebook
 
-## 🚧 Status do Projeto: Em Desenvolvimento
-O projeto encontra-se atualmente em fase de **validação de lógica (PoC)**. 
-**Próximos passos:**
-- Refatoração do código para padrões de **Clean Code** e modularização.
-- Implementação de um dashboard para visualização das taxas de vitória (win rate) por classe.
+## 📂 Estrutura do Projeto
+A organização dos arquivos reflete as etapas do pipeline de dados:
 
----
-Desenvolvido por [Guilherme Henrick Lima de Paiva](mailto:guilhermehenrickhlp@gmail.com)
+* **`utils.py`**: Módulo central contendo as funções de requisição web, paginação e raspagem de dados em HTML.
+* **`Fab_decklists.ipynb` / `Fab_herois.ipynb` / `Fab_LL.ipynb`**: Notebooks responsáveis pelas etapas de extração e transformação de entidades específicas do jogo (Decks, Heróis e sistema de *Living Legend*).
+* **`teste.py`**: Script de automação que orquestra a execução dos notebooks e consolida os dados finais utilizando caminhos relativos.
+* **Datasets**: Arquivos consolidados (`dataset.csv` e `dataset.parquet`) prontos para consumo e análise.
