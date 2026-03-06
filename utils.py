@@ -58,4 +58,4 @@ def apagar_arquivo(caminho_arquivo):
         os.remove(caminho_arquivo)
         print("Arquivo apagado com sucesso.")
     else:
-        print("O arquivo não existe.")
+        print(f"O arquivo {caminho_arquivo} não existe.")
