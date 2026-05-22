@@ -34,8 +34,6 @@ decklists = pd.read_parquet(caminho_decklists)
 herois = pd.read_parquet(caminho_herois)
 df = pd.merge(decklists, herois, on='Heroi')
 
-print(df.head())
-
 saida_parquet = os.path.join(pasta_raiz, 'dataset.parquet')
 saida_csv = os.path.join(pasta_raiz, 'dataset.csv')
 df.to_parquet(saida_parquet)
