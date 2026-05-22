@@ -39,7 +39,8 @@ EVENT_MAPPING = {
     "bulk up": "bulk up",
     "primed to fight": "primed to fight",
     "masterclass": "masterclass",
-    "world tour": "world tour"
+    "world tour": "world tour",
+    "BattleGrounds": "BattleGrounds"
 }
 
 def arquivo_e_atual(caminho_arquivo):

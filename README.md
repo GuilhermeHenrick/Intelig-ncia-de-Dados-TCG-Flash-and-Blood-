@@ -1,95 +1,34 @@
 # ⚔️ Inteligência de Dados - TCG Flesh and Blood
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python&logoColor=white)
-![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-Ativo-brightgreen)
+## 📌 Sobre o Projeto
+Este projeto consiste em um pipeline de **Engenharia de Dados e Web Scraping** focado na extração, transformação e análise de dados do metagame do Trading Card Game (TCG) **Flesh and Blood**. 
 
-## 📜 Sobre o Projeto
+O objetivo principal é coletar dados de *decklists*, heróis e cartas, processá-los de forma eficiente e estruturá-los para consumo em dashboards interativos (como Looker Studio), permitindo análises aprofundadas sobre o estado atual do jogo.
 
-Este projeto de **Inteligência de Dados e Web Scraping** foca no card game **Flesh and Blood (TCG)**. O objetivo principal é extrair, processar e consolidar informações diretamente do site oficial do jogo, criando um banco de dados estruturado sobre torneios, *decklists* (listas de cartas) e heróis.
+## 🚀 Tecnologias e Ferramentas
+* **Linguagem:** Python
+* **Web Scraping:** `BeautifulSoup`, `requests`
+* **Processamento de Dados:** `pandas`
+* **Orquestração:** `papermill` (para execução programática de Jupyter Notebooks)
+* **Paralelismo:** `concurrent.futures` (para otimização do tempo de scraping)
+* **Armazenamento:** Arquivos `.csv` e `.parquet`
 
-O resultado é um *dataset* limpo (disponível em formatos `.csv` e `.parquet`), construído para viabilizar análises estatísticas avançadas, estudos de performance de classes/talentos e visualização do *metagame* atual. O pipeline de dados foi desenhado para ser automatizado, atualizando as informações de forma eficiente através do processamento paralelo.
+## 📂 Estrutura do Repositório
+* `Fab_decklists.ipynb` / `Fab_herois.ipynb`: Notebooks responsáveis pela lógica de extração e transformação inicial das diferentes entidades do jogo.
+* `merge_dfs.py`: Script principal que orquestra todo o pipeline. Utiliza o `papermill` para rodar os notebooks parametrizados e consolida os DataFrames em uma base única.
+* `utils.py`: Módulo contendo funções auxiliares e reutilizáveis (como paginação, headers de requisição e tratamentos HTML).
+* `dados/`: Diretório de saída contendo os arquivos finais gerados para análise (`.csv` e `.parquet`).
 
-> 📌 **Fonte dos dados:** [fabtcg.com](https://fabtcg.com) — site oficial do jogo Flesh and Blood.
+## ⚙️ Principais Funcionalidades
+* **Extração Paralelizada:** Uso de múltiplas *threads* para realizar requisições simultâneas, reduzindo drasticamente o tempo de coleta nas páginas de decks.
+* **ETL Automatizado:** Transformação de notebooks de exploração visual em etapas automatizadas e sólidas de um pipeline de dados através do `papermill`.
+* **Armazenamento Otimizado:** Exportação dos dados consolidados em formato Parquet para maior compressão e performance na leitura em ferramentas de BI.
+* **Scraping Ético:** Implementação de *delays* controlados entre as requisições para evitar sobrecarga nos servidores de origem.
 
----
+## 🛠️ Como Executar
 
-## 🛠️ Tecnologias Utilizadas
-
-| Categoria | Tecnologia |
-|---|---|
-| Linguagem | Python 3.10+ |
-| Manipulação de Dados | `pandas` |
-| Web Scraping | `BeautifulSoup` (bs4), `requests` |
-| Processamento Paralelo | `concurrent.futures` |
-| Orquestração | `papermill` |
-| Visualização | Google Looker Studio |
-| Ambiente | Jupyter Notebook |
-
----
-
-## 📂 Estrutura do Projeto
-
-```
-├── utils.py               # Funções compartilhadas: requisições, paginação e scraping
-├── merge_dfs.py           # Orquestra os notebooks e consolida o dataset final
-├── Fab_decklists.ipynb    # Extração e transformação das decklists
-├── Fab_herois.ipynb       # Extração e transformação dos heróis
-├── Fab_LL.ipynb           # Extração do sistema Living Legend
-├── dataset.csv            # Dataset consolidado (formato CSV)
-├── dataset.parquet        # Dataset consolidado (formato Parquet)
-├── decks_fabtcg.csv       # Dados intermediários de decks
-├── herois_fabtcg.csv      # Dados intermediários de heróis
-└── requirements.txt       # Dependências do projeto
-```
-
----
-
-## 🚀 Como Executar
-
-### Pré-requisitos
-
-- Python 3.10 ou superior
-- pip
-
-### Instalação
-
+1. **Clone o repositório:**
+   
 ```bash
-# 1. Clone o repositório
-git clone https://github.com/GuilhermeHenrick/Intelig-ncia-de-Dados-TCG-Flash-and-Blood-.git
-cd Intelig-ncia-de-Dados-TCG-Flash-and-Blood-
-
-# 2. (Recomendado) Crie um ambiente virtual
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# venv\Scripts\activate   # Windows
-
-# 3. Instale as dependências
-pip install -r requirements.txt
-```
-
-### Execução do Pipeline
-
-```bash
-# Roda o pipeline completo: extrai, transforma e consolida os dados
-python merge_dfs.py
-```
-
-O script irá executar automaticamente os notebooks `Fab_decklists.ipynb` e `Fab_herois.ipynb` e gerar os arquivos `dataset.csv` e `dataset.parquet` na raiz do projeto.
-
----
-
-## ⚠️ Uso Ético do Web Scraping
-
-Este projeto realiza scraping de dados públicos do site oficial do Flesh and Blood para fins exclusivamente educacionais e analíticos. O pipeline foi desenvolvido com respeito às boas práticas:
-
-- Requisições com intervalo de tempo entre chamadas para não sobrecarregar o servidor.
-- Nenhum dado privado ou protegido é coletado.
-- Os dados são utilizados apenas para análise do cenário competitivo público.
-
----
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
+   git clone [https://github.com/GuilhermeHenrick/Intelig-ncia-de-Dados-TCG-Flash-and-Blood-.git](https://github.com/GuilhermeHenrick/Intelig-ncia-de-Dados-TCG-Flash-and-Blood-.git)
+   cd Intelig-ncia-de-Dados-TCG-Flash-and-Blood-
