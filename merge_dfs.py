@@ -27,14 +27,12 @@ for arquivo in notebooks:
     else:
         print(f"O arquivo {arquivo_saida} não existe.")
 
-caminho_decklists = os.path.join(pasta_raiz, "decks_fabtcg.parquet")
-caminho_herois = os.path.join(pasta_raiz, "herois_fabtcg.parquet")
+caminho_decklists = os.path.join(pasta_raiz, "decks_fabtcg.csv")
+caminho_herois = os.path.join(pasta_raiz, "herois_fabtcg.csv")
 
-decklists = pd.read_parquet(caminho_decklists)
-herois = pd.read_parquet(caminho_herois)
+decklists = pd.read_csv(caminho_decklists)
+herois = pd.read_csv(caminho_herois)
 df = pd.merge(decklists, herois, on='Heroi')
 
-saida_parquet = os.path.join(pasta_raiz, 'dataset.parquet')
 saida_csv = os.path.join(pasta_raiz, 'dataset.csv')
-df.to_parquet(saida_parquet)
 df.to_csv(saida_csv)
